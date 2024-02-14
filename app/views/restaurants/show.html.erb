@@ -1,0 +1,29 @@
+<div>
+  <h1> <%= @restaurant.name %> </h1>
+    <p> <%= @restaurant.category %> </p>
+    <p> <%= @restaurant.address %> </p>
+    <p> <%= @restaurant.phone_number %> </p>
+  <div>
+
+  <div>
+      <h3> Reviews </h3>
+      <% @restaurant.reviews.each do |review| %>
+        <p> <%= review.rating %> </p>
+        <p> <%= review.content %> </p>
+      <% end %>
+  </div>
+
+  <%= link_to "View list", restaurants_path %>
+  </div>
+
+  <div class="container">
+    <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= f.label :rating %>
+      <%= f.select :rating, ["0", "1", "2", "3", "4", "5"] %>
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+</div>
